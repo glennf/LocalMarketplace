@@ -59,3 +59,4 @@
 /Users/glennflaten/LocalMarketplace/LocalMarketplace/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/LocalMarketplace.AssemblyInfoInputs.cache
 /Users/glennflaten/LocalMarketplace/LocalMarketplace/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/LocalMarketplace.AssemblyInfo.cs
 /Users/glennflaten/LocalMarketplace/LocalMarketplace/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/LocalMarketplace.csproj.CoreCompileInputs.cache
+/Users/glennflaten/LocalMarketplace/LocalMarketplace/obj/Debug/net9.0-maccatalyst/maccatalyst-arm64/LocalMarketplace.sourcelink.json
