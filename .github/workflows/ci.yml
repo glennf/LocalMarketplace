@@ -1,0 +1,103 @@
+name: LocalMarketplace CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 9.0.x
+        
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build --no-restore
+      
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+      
+  build-android:
+    runs-on: windows-latest
+    needs: build-and-test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 9.0.x
+        
+    - name: Setup JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'microsoft'
+        
+    - name: Install MAUI Workload
+      run: dotnet workload install maui
+        
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build Android App
+      run: dotnet build LocalMarketplace/LocalMarketplace.csproj -f net9.0-android -c Release
+  
+  build-windows:
+    runs-on: windows-latest
+    needs: build-and-test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 9.0.x
+        
+    - name: Install MAUI Workload
+      run: dotnet workload install maui
+        
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build Windows App
+      run: dotnet build LocalMarketplace/LocalMarketplace.csproj -f net9.0-windows10.0.19041.0 -c Release
+  
+  build-ios-mac:
+    runs-on: macos-latest
+    needs: build-and-test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 9.0.x
+        
+    - name: Install MAUI Workload
+      run: dotnet workload install maui
+        
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build iOS and macOS Apps
+      run: |
+        dotnet build LocalMarketplace/LocalMarketplace.csproj -f net9.0-ios -c Release
+        dotnet build LocalMarketplace/LocalMarketplace.csproj -f net9.0-maccatalyst -c Release
