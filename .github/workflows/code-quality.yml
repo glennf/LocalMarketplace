@@ -54,7 +54,5 @@ jobs:
     
     - name: End SonarCloud scan
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      run: |
-        dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+        GITHUB_TOKEN: $
+
