@@ -29,7 +29,10 @@ jobs:
         else
           echo "run_sonarcloud=false" >> $GITHUB_OUTPUT
         fi
-    
+
+    - name: Install .NET MAUI Workloads
+      run: dotnet workload restore
+
     - name: Restore workloads
       if: runner.os == 'Windows' || runner.os == 'macOS'
       run: dotnet workload install maui
