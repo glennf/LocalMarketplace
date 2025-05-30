@@ -32,7 +32,7 @@ We will implement the LocalMarketplace using Test-Driven Development principles:
 
 ## Technical Stack
 
-- **Framework**: .NET MAUI 8.0+
+- **Framework**: .NET MAUI 9.0+
 - **Architecture**: MVVM (Model-View-ViewModel)
 - **Backend**: Azure App Service with Azure Functions
 - **Database**:  
