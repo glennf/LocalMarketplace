@@ -1,0 +1,18 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "omnisharp.useModernNet": true,
+        "omnisharp.defaultLaunchSolution": "LocalMarketplace.sln",
+        "omnisharp.enableRoslynAnalyzers": true,
+        "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true,
+        "dotnet.defaultSolution": "LocalMarketplace.sln",
+        "csharp.inlayHints.enableInlayHintsForParameters": true,
+        "csharp.inlayHints.enableInlayHintsForLiteralParameters": true,
+        "csharp.inlayHints.enableInlayHintsForObjectCreationParameters": true,
+        "csharp.semanticHighlighting.enabled": true
+    }
+}

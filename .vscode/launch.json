@@ -1,0 +1,66 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug MAUI (Windows)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-windows",
+            "program": "${workspaceFolder}/LocalMarketplace/bin/Debug/net9.0-windows10.0.19041.0/win10-x64/LocalMarketplace.dll",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole"
+        },
+        {
+            "name": "Debug MAUI (MacCatalyst)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-maccatalyst",
+            "program": "${workspaceFolder}/LocalMarketplace/bin/Debug/net9.0-maccatalyst/maccatalyst-x64/LocalMarketplace.dll",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole"
+        },
+        {
+            "name": "Debug MAUI (Android)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-android",
+            "program": "dotnet",
+            "args": [
+                "build",
+                "${workspaceFolder}/LocalMarketplace/LocalMarketplace.csproj",
+                "-t:Run",
+                "-f:net9.0-android",
+                "--no-restore"
+            ],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Debug MAUI (iOS)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-ios",
+            "program": "dotnet",
+            "args": [
+                "build",
+                "${workspaceFolder}/LocalMarketplace/LocalMarketplace.csproj",
+                "-t:Run",
+                "-f:net9.0-ios",
+                "--no-restore"
+            ],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Debug Tests",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-tests",
+            "program": "dotnet",
+            "args": [
+                "test",
+                "${workspaceFolder}/LocalMarketplace.Tests/LocalMarketplace.Tests.csproj",
+                "--no-restore"
+            ],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
